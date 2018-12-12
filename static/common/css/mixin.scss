@@ -1,0 +1,31 @@
+$base-font-size: 75 !default;
+@mixin remCalc($props,$sizes,$base:$base-font-size){
+  $values: ();
+  $sublists: false;
+
+  @each $s in $sizes {
+
+    @if type-of($s) == list {
+       $sublists: true; $vv: ();
+        @each $ss in $s {
+          $vv: append($vv,if(type-of($ss) == number, #{$ss / $base}rem, $ss));
+        } $values: append($values,join((), $vv));
+      } @else {
+        $values: append($values,if(type-of($s) == number, #{$s / $base}rem, $s));
+      }
+    }
+    $value: join((), $values, if($sublists,comma,space)); 
+    @each $prop in $props {#{$prop}: $value} 
+  }
+
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+
+  [data-dpr= "2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr] & {
+    font-size: $font-size * 3;
+  }
+}

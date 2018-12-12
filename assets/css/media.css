@@ -1,0 +1,26 @@
+@media all and (max-width: 1199px) {
+  body{
+    background: red;
+  }
+ }
+
+@media all and (max-width: 991px) { 
+  body{
+    background: rgb(255, 0, 242);
+  }
+}
+
+@media all and (max-width: 768px) { 
+  body{
+    background: rgb(0, 89, 255);
+  }
+}
+
+@media all and (max-width: 575px) {
+  body{
+    background: rgb(43, 255, 0);
+  }
+  html {
+    /* font-size: 37.5px; */
+  }
+ }
